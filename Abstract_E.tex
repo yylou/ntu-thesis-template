@@ -1,6 +1,25 @@
 \begin{Abstract_E}
 
-TEST \\
+Wearable devices have become ubiquitous and provide convenient features for users, 
+such as heart rate monitor, fitness tracker.
+However, because the devices are designed to be lightweight and power-saving,
+the computing capability of wearable devices is often limited. 
+The existing solution is to pair with the local-hub, mostly smartphone, via Bluetooth Low Energy (BLE) or Wi-Fi interface.
+Whenever a request takes place, 
+the wearable device will automatically transfer it to local-hub and then reply with the results.
+Connection via bluetooth, however, is only functional within a narrow connection range, 
+whereas connection via Wi-Fi interface has a long response time. 
+It means when you left your smartphone at home and walk out with your wearable device only, 
+you need to compromise on long network latency delay. 
+In this paper, we propose a system based on the concept of Fog Computing to address those shortcomings. 
+We deploy the wearable services at the edge side to serve the wearable devices.
+On the end device (Wearable device), we modify the system (Android) behavior, 
+so that it can complete the service via connected Access Point (AP), instead of local-hub.
+Most importantly, this modification is transparent which means it doesn't affect the user and app developer of wearable devices.
+On the service provider (AP) at edge side, we provide the sharable services, which are required by wearable device.
+This system not only enables wearable devices can be functional within a wider connection range (Compared with Bluetooth paring), 
+but also reduce the long network latency delay caused by original mechanism.
+Through the experiments, the results show that we reduce the execution time (Network latency) of services by 2.29x. \\
 
 {\bf Keywords} : 
 
