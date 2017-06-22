@@ -1,0 +1,194 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[a4paper, 12pt, oneside]{book}
+\usepackage{cite}
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,filecolor=blue,urlcolor=blue,unicode]{hyperref}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{indentfirst}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%\usepackage[noend]{algpseudocode}
+\usepackage{enumitem}
+\usepackage{mfirstuc}
+\usepackage{fancyvrb}
+\usepackage{amsfonts}
+\usepackage{ifmtarg}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[mathcal]{euscript}
+\usepackage[notbib]{tocbibind}
+\usepackage{rotating}
+\usepackage{hhline}
+\usepackage{wallpaper}
+\usepackage{pdfpages}
+\usepackage{pst-fractal,pst-exa}
+\usepackage{subfigure}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{flushend}
+\setstcolor{red}
+\renewcommand{\arraystretch}{1.2}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-30pt}{30pt}
+
+\newcommand{\ws}[1]{\textcolor{magenta}{#1}}
+\renewcommand{\ws}[1]{#1}
+\newcommand{\bryan}[1]{\textcolor{red}{#1}}
+\renewcommand{\algorithmicrequire}{ \textbf{Input:}} %Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{ \textbf{Output:}} %UseOutput in the format of Algorithm  
+%\newcommand\sForAll[2]{ \ForAll{#1}#2\EndFor}
+%\newcommand\sIf[2]{ \If{#1}#2\EndIf}
+%\usepackage[ruled]{algorithm2e}
+%\usepackage{etoolbox}
+
+
+%\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+%Define \XeTeX \XeLaTeX command
+\def\reflect#1{{\setbox0=\hbox{#1}\rlap{\kern0.5\wd0
+ \special{x:gsave}\special{x:scale -1 1}}\box0 \special{x:grestore}}}
+\def\XeLaTeX{\leavevmode
+ \setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflect{E}}\kern-.08em\LaTeX}%
+ \dp0=0pt\ht0=0pt\box0}
+ \def\XeTeX{\leavevmode
+ \setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflect{E}}\kern-.08em\TeX}%
+ \dp0=0pt\ht0=0pt\box0}
+
+% \usepackage[none]{hyphenat}  %hyphenation package
+
+% Start Declare physics symbols
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}} 
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot #1} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times #1} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+%end Declare
+
+\usepackage{tabularx}
+%tabularx, is defined, which takes the same arguments as tabular*, but modifies the widths of certain columns, rather than the inter column space, to set a table with the requested total width. The columns that may stretch are marked with the new token X in the preamble argument. This package requires the array package. The package is part of the tools bundle in the LaTeX required distribution.
+\usepackage{lmodern}
+%The Latin Modern family of fonts consists of 72 text fonts and 20 mathematics fonts, and is based on the Computer Modern fonts released into public domain by AMS (copyright © 1997 AMS).
+\font\lmr="[lmroman10-regular]"
+
+\usepackage{listings}
+%Typeset source code listings using LaTeX.
+\usepackage{textcomp}
+%provide many text symbols (such as baht, bullet, copyright, musicalnote, onequarter, section, and yen)
+
+\usepackage{amsthm}
+%The package facilitates the kind of theorem setup typically needed in American Mathematical Society publications. The package offers the theorem setup of the AMS document classes (amsart, amsbook, etc.) encapsulated in LaTeX package form so that it can be used with other document classes. Amsthm is part of the (required) AMS-LaTeX distribution, so should be present in any LaTeX distribution.
+\newtheorem{mydef-no-caption}{Definition}
+\newenvironment{mydef}[1][]%
+	{\begin{mydef-no-caption}{\ifnotmtarg{#1}{\textnormal{(\textbf{#1})}~}}}%
+	{\end{mydef-no-caption}}
+
+\usepackage{numprint}
+%Print numbers with separators and exponent if necessary.
+\npthousandsep{,}
+\npthousandthpartsep{}
+\npdecimalsign{.}
+
+\usepackage{multirow}
+%Create tabular cells spanning multiple rows.
+
+\usepackage{ThesisStyle}
+%NTU thesis style file
+\hypersetup{
+	pdfauthor={\authorEN{}},
+	pdftitle={\titleEN{}},
+	pdfsubject={NTU Thesis}
+}
+
+\usepackage{setspace}
+%Set space between lines.
+
+\usepackage[absolute]{textpos}
+%Place boxes at arbitrary positions on the LaTeX page.
+\lstdefinestyle{nonumbers}{numbers=none}
+\textblockorigin{0mm}{0mm}
+
+\setcounter{tocdepth}{2}
+
+\pagestyle{plain}
+
+\begin{document}
+
+%----------- hyphenation  -----------
+%\righthyphenmin=10  % Best hyphenation parameter
+
+%----------- WaterMark -----------
+\CenterWallPaper{0.174}{WaterMark.pdf}
+\setlength{\wpXoffset}{6.1725cm}
+\setlength{\wpYoffset}{10.5225cm}
+
+%----------- cover page -----------
+\maketitle
+
+%----------- side page, used for printing on spline -----------
+%\makeside
+
+
+\frontmatter
+%----------- generate the certification page by LaTeX -----------
+%\makecertification
+%----------- includepdf by using package pdfpages -----------
+\addcontentsline{toc}{chapter}{口試委員會審定書}
+\includepdf[pages={1}]{Certification.pdf}
+
+\onehalfspacing
+\input{Ack_C}
+\input{Abstract_C}
+\doublespacing
+\input{Abstract_E}
+\tableofcontents
+
+\doublespacing
+\listoffigures
+
+\listoftables
+
+\mainmatter
+
+\doublespacing
+
+%----------- Include/Input your thesis here -----------
+
+\input{Introduction}
+\input{RelatedWork}
+\input{Conclusion}
+
+%chapter cite  == \include
+
+\appendix
+%----------- Input your appendix here  -----------
+%\input{AppendixA} 
+%or %chapter cite  == \include
+%\include{AppendixA}
+
+\backmatter
+
+%---------- Input your reference here ---------
+\addcontentsline{toc}{chapter}{Bibliography}
+%\renewcommand{\bibname}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{Bibliography}
+%----------- Input your Figure chapter here  -----------
+%\input{EndFigTab} 
+%chapter cite  == \include
+%\include{EndFigTab}
+
+\end{document}
